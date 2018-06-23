@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class AIWaypoint : MonoBehaviour
 {
-    public Transform Destination;
+    public AIWaypoint Destination;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<AIMotor>())
+        var AI = other.GetComponent<AIMotor>();
+        if (AI != null)
         {
-            other.SendMessage("SetDestination", Destination);
+            AI.SetDestination(Destination);
         }
     }
 

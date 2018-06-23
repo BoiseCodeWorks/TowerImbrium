@@ -13,8 +13,9 @@ public abstract class BaseMotor : MonoBehaviour
     private float baseGravity = 15;
     private float baseJumpForce = 7;
     private float terminalVelocity = 30;
-    private float distanceToGround = .5f;
+    public float distanceToGround = .3f;
     private float groundRayOffset = .1f;
+    public LayerMask GroundLayer;
 
     public float Speed { get { return baseSpeed; } }
     public float Gravity { get { return baseGravity; } }
@@ -74,19 +75,19 @@ public abstract class BaseMotor : MonoBehaviour
 
         ray = new Vector3(center.x, y, center.z);
         Debug.DrawRay(ray, Vector3.down, Color.green);
-        if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround)) { return true; }
+        if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround, GroundLayer)) { return true; }
 
         ray = new Vector3(center.x + x, y, center.z + z);
         Debug.DrawRay(ray, Vector3.down, Color.green);
-        if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround)) { return true; }
+        if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround, GroundLayer)) { return true; }
 
         ray = new Vector3(center.x - x, y, center.z + z);
         Debug.DrawRay(ray, Vector3.down, Color.green);
-        if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround)) { return true; }
+        if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround, GroundLayer)) { return true; }
 
         ray = new Vector3(center.x + x, y, center.z - z);
         Debug.DrawRay(ray, Vector3.down, Color.green);
-        if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround)) { return true; }
+        if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround, GroundLayer)) { return true; }
         return false;
     }
 

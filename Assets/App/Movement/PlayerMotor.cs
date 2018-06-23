@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Destroyable))]
 public class PlayerMotor : BaseMotor
 {
     public ThirdPersonCameraController camMotor;

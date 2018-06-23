@@ -367,8 +367,10 @@ GameObject:
   - component: {fileID: 4232902968215772}
   - component: {fileID: 95771295092124150}
   - component: {fileID: 143474165207859710}
-  - component: {fileID: 114685351756872574}
   - component: {fileID: 195538490612118670}
+  - component: {fileID: 114151303827220222}
+  - component: {fileID: 114808357075104904}
+  - component: {fileID: 135399646931660148}
   m_Layer: 0
   m_Name: Skele
   m_TagString: Untagged
@@ -808,7 +810,7 @@ Animator:
   m_GameObject: {fileID: 1844704834048846}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3392e95529ae7540ad53657e3d0ce7d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 151f2cf41c1814941843ca39e9403ff7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -817,7 +819,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114685351756872574
+--- !u!114 &114151303827220222
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -828,6 +830,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7faac3423781845bde894f0cd6f19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetDistance: 1
+  AttackCooldown: 1.5
+  NextWaypoint: {fileID: 0}
+--- !u!114 &114808357075104904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844704834048846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65791c9f59883d4fae4cbdedf76ecf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldOfViewAngle: 110
+  PlayerInSight: 0
+  PlayerLastSighting: {x: 0, y: 0, z: 0}
+--- !u!135 &135399646931660148
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844704834048846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137443646323936026
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

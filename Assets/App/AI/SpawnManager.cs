@@ -6,12 +6,11 @@ using UnityEngine;
 public class SpawnPoint
 {
     public Transform self;
-    public Transform destination;
+    public AIWaypoint destination;
 }
 
 public class SpawnManager : MonoSingleton<SpawnManager>
 {
-
     public List<SpawnPoint> SpawnPoints = new List<SpawnPoint>();
     public List<GameObject> SpawnPrefabs = new List<GameObject>();
 
