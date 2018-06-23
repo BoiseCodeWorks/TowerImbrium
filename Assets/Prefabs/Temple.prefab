@@ -514,12 +514,13 @@ GameObject:
   - component: {fileID: 4970062107368758}
   - component: {fileID: 33962366547987166}
   - component: {fileID: 23980083881033052}
+  - component: {fileID: 64655781732241204}
   m_Layer: 0
   m_Name: Stairs 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1098449188166768
 GameObject:
@@ -2042,6 +2043,7 @@ GameObject:
   - component: {fileID: 4183184537439754}
   - component: {fileID: 33007407605240216}
   - component: {fileID: 23197900533094088}
+  - component: {fileID: 54038354317748566}
   m_Layer: 0
   m_Name: Stairs 7
   m_TagString: Untagged
@@ -2599,6 +2601,7 @@ GameObject:
   - component: {fileID: 4303157912586794}
   - component: {fileID: 33527110296742086}
   - component: {fileID: 23429157640101776}
+  - component: {fileID: 54732059356792478}
   m_Layer: 0
   m_Name: Fence 3 Bright (1)
   m_TagString: Untagged
@@ -3277,6 +3280,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4496804942174406}
+  - component: {fileID: 65837712282649202}
   m_Layer: 0
   m_Name: Example Pieced Prefab 3
   m_TagString: Untagged
@@ -3294,6 +3298,8 @@ GameObject:
   - component: {fileID: 4016771075733198}
   - component: {fileID: 33361978705068056}
   - component: {fileID: 23953706238546522}
+  - component: {fileID: 54253190497661192}
+  - component: {fileID: 64494959574487252}
   m_Layer: 0
   m_Name: Platform Fence 2x13x13
   m_TagString: Untagged
@@ -4140,6 +4146,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4974190210270428}
+  - component: {fileID: 65604921015770090}
   m_Layer: 0
   m_Name: Example Pieced Prefab 2
   m_TagString: Untagged
@@ -4310,6 +4317,7 @@ GameObject:
   - component: {fileID: 4154791764093290}
   - component: {fileID: 33300179499388954}
   - component: {fileID: 23895671435263370}
+  - component: {fileID: 65883918815922862}
   m_Layer: 0
   m_Name: Fence Dark Corner Block
   m_TagString: Untagged
@@ -4990,6 +4998,7 @@ GameObject:
   - component: {fileID: 4580028757053138}
   - component: {fileID: 33319121709899738}
   - component: {fileID: 23494905528239248}
+  - component: {fileID: 65002006201045522}
   m_Layer: 0
   m_Name: Fence 4 Dark (1)
   m_TagString: Untagged
@@ -7139,7 +7148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1430337594569026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 570.9, y: -81.5, z: 344.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4920531283435274}
@@ -23283,6 +23292,127 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235846170658412}
   m_Mesh: {fileID: 4300000, guid: fef0143b1f3d3234b8ab4bceaf8ed979, type: 3}
+--- !u!54 &54038354317748566
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380077688327474}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54253190497661192
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586249466849630}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54732059356792478
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458680989766600}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &64494959574487252
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586249466849630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 42b76065d2eaf36479df2c69bc205d71, type: 3}
+--- !u!64 &64655781732241204
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1097485382265436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 32c72e38b1281a94d8435ac9755da46b, type: 3}
+--- !u!65 &65002006201045522
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907177237117988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7353306, y: 3.2265248, z: 16.000011}
+  m_Center: {x: -0.000030517578, y: 1.6132374, z: 0.0000231266}
+--- !u!65 &65604921015770090
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760989800788248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65837712282649202
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581348943805980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65883918815922862
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792025775233144}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3694768, y: 3.2264793, z: 3.3659563}
+  m_Center: {x: -0.31707352, y: 1.6132287, z: -0.31703377}
 --- !u!154 &154964315081133252
 TerrainCollider:
   m_ObjectHideFlags: 1
@@ -23291,7 +23421,7 @@ TerrainCollider:
   m_GameObject: {fileID: 1370476947446438}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: d33ce6866d7feb347889682898238fc3, type: 2}
+  m_TerrainData: {fileID: 0}
   m_EnableTreeColliders: 1
 --- !u!218 &218898081317034802
 Terrain:
