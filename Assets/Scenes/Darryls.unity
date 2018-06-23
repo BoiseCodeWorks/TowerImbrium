@@ -15,18 +15,18 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.99607843, g: 0.7176471, b: 0.3647059, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.002
+  m_FogColor: {r: 0.1509434, g: 0.13681401, b: 0.118903525, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.003
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1, g: 0.7229238, b: 0.36294332, a: 1}
-  m_AmbientEquatorColor: {r: 1, g: 0.7229238, b: 0.36294332, a: 1}
-  m_AmbientGroundColor: {r: 1, g: 0.7229238, b: 0.36294332, a: 1}
+  m_LinearFogEnd: 400
+  m_AmbientSkyColor: {r: 0.3679245, g: 0.3154419, b: 0.2481755, a: 1}
+  m_AmbientEquatorColor: {r: 0.20652366, g: 0.3679245, b: 0.30881998, a: 1}
+  m_AmbientGroundColor: {r: 0.5801887, g: 1, b: 0.8960786, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: da976b1a4f7ebb949b0f71341e4f1821, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
   m_HaloStrength: 1
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1788477005}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
@@ -53,7 +53,7 @@ LightmapSettings:
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
     m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 0
+    m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 1
@@ -313,6 +313,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 2}
       propertyPath: m_MoveSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 2}
+      propertyPath: m_HDR
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 2}
@@ -770,6 +774,22 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d04301a4232e9b844b8e224359e24337, type: 3}
   m_PrefabInternal: {fileID: 1910489589}
+--- !u!1 &920661501 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 2}
+  m_PrefabInternal: {fileID: 210502181}
+--- !u!114 &920661507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920661501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: df6b954bc6615554990e1856d4f5c08b, type: 2}
 --- !u!1 &945520834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,8 +1831,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.8145415, b: 0.514151, a: 1}
-  m_Intensity: 0.48
+  m_Color: {r: 0.5137255, g: 1, b: 0.94945127, a: 1}
+  m_Intensity: 0.54
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1833,7 +1853,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0.96
+  m_BounceIntensity: 0.9
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -2004,6 +2024,37 @@ Prefab:
       value: 
       objectReference: {fileID: 15600000, guid: d33ce6866d7feb347889682898238fc3,
         type: 2}
+    - target: {fileID: 1129948584180626, guid: 6bc3be7bc0291fe48a5b1bd31606ee52, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303301035294510, guid: 6bc3be7bc0291fe48a5b1bd31606ee52, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685923384139658, guid: 6bc3be7bc0291fe48a5b1bd31606ee52, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131151138577778, guid: 6bc3be7bc0291fe48a5b1bd31606ee52, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23058232333623034, guid: 6bc3be7bc0291fe48a5b1bd31606ee52,
+        type: 2}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23058232333623034, guid: 6bc3be7bc0291fe48a5b1bd31606ee52,
+        type: 2}
+      propertyPath: m_AutoUVMaxDistance
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 23058232333623034, guid: 6bc3be7bc0291fe48a5b1bd31606ee52,
+        type: 2}
+      propertyPath: m_ImportantGI
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6bc3be7bc0291fe48a5b1bd31606ee52, type: 2}
   m_IsPrefabParent: 0
@@ -2482,7 +2533,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11437536, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
       propertyPath: RainIntensity
-      value: 0.5
+      value: 0.523
+      objectReference: {fileID: 0}
+    - target: {fileID: 19948124, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
+      propertyPath: m_LengthScale
+      value: 91
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
