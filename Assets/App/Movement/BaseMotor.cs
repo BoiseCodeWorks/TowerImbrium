@@ -2,25 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController), typeof(Animator))]
 public abstract class BaseMotor : MonoBehaviour
 {
     protected CharacterController controller;
     protected Transform characterTransform;
     protected BaseState State;
+    private Animator anim;
 
-    private float baseSpeed = 5;
-    private float baseGravity = 15;
-    private float baseJumpForce = 7;
-    private float terminalVelocity = 30;
+    [Header("Base Motor Configuration")]
+    [Tooltip("Affects all characters")]
+    public float baseSpeed = 5;
+    public float baseGravity = 15;
+    public float baseJumpForce = 7;
+    public float terminalVelocity = 30;
     public float distanceToGround = .3f;
-    private float groundRayOffset = .1f;
+    public float groundRayOffset = .1f;
     public LayerMask GroundLayer;
+
 
     public float Speed { get { return baseSpeed; } }
     public float Gravity { get { return baseGravity; } }
     public float TerminalVelocity { get { return terminalVelocity; } }
     public float JumpForce { get { return baseJumpForce; } }
+    public float CurrentSpeed { get { return controller.velocity.magnitude; } }
+    public Animator Animator { get { return anim; } }
 
     public float VerticalVelocity { get; set; }
     public Vector3 MoveVector { get; set; }
@@ -29,6 +35,7 @@ public abstract class BaseMotor : MonoBehaviour
     protected virtual void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
         characterTransform = transform;
     }
 
@@ -52,7 +59,6 @@ public abstract class BaseMotor : MonoBehaviour
         var t = System.Type.GetType(stateName);
         if (t != null)
         {
-            Debug.Log("Transitioning to new State " + stateName);
             State.Teardown();
             State = gameObject.AddComponent(t) as BaseState;
             State.Init();
@@ -89,6 +95,11 @@ public abstract class BaseMotor : MonoBehaviour
         Debug.DrawRay(ray, Vector3.down, Color.green);
         if (Physics.Raycast(ray, Vector3.down, out hit, distanceToGround, GroundLayer)) { return true; }
         return false;
+    }
+
+    public virtual void TriggerAnimation(string animationName)
+    {
+        anim.Play(animationName);
     }
 
     protected abstract void UpdateMotor();

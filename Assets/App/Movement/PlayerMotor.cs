@@ -8,6 +8,8 @@ using UnityEngine;
 public class PlayerMotor : BaseMotor
 {
     public ThirdPersonCameraController camMotor;
+    public bool CanAttack = true;
+    public float CoolDown = 1.5f;
     private Transform camTransform;
 
     protected override void Start()
@@ -25,7 +27,7 @@ public class PlayerMotor : BaseMotor
         dir.x = Input.GetAxis("Horizontal");
         dir.z = Input.GetAxis("Vertical");
 
-        if(dir.magnitude > 1)
+        if (dir.magnitude > 1)
         {
             dir.Normalize();
         }
@@ -49,5 +51,24 @@ public class PlayerMotor : BaseMotor
         State.Transition();
         Move();
         Rotate();
+        Attack();
+    }
+
+    private void Attack()
+    {
+        if (!CanAttack) { return; }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            StartCoroutine("StartCoolDown");
+        }
+    }
+
+    IEnumerator StartCoolDown()
+    {
+        CanAttack = false;
+        Animator.SetTrigger("StartAttack");
+        yield return new WaitForSeconds(CoolDown);
+        Animator.ResetTrigger("StartAttack");
+        CanAttack = true;
     }
 }

@@ -21,6 +21,7 @@ public abstract class BaseState : MonoBehaviour
     protected void ApplySpeed(ref Vector3 input, float speed)
     {
         input *= speed;
+        motor.Animator.SetFloat("Speed", motor.CurrentSpeed);
     }
 
     protected void ApplyGravity(ref Vector3 input, float gravity)

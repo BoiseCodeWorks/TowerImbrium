@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class WalkState : BaseState
 {
+    public override void Init()
+    {
+        base.Init();
+    }
+
     public override Vector3 ProcessMotion(Vector3 input)
     {
         ApplySpeed(ref input, motor.Speed);

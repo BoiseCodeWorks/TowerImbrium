@@ -103,8 +103,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160098}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -499.2, y: -123.22066, z: -455.6216}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413392}
@@ -169,20 +169,20 @@ MonoBehaviour:
   RainSoundLight: {fileID: 8300000, guid: c980eda1ec9b9ff4b930005976b00f41, type: 3}
   RainSoundMedium: {fileID: 8300000, guid: 3359e9d10af08ca46ae396298dbd1ed9, type: 3}
   RainSoundHeavy: {fileID: 8300000, guid: db1471092e49b7445bfbd374a17ea61a, type: 3}
-  RainIntensity: 1
+  RainIntensity: 0.914
   RainFallParticleSystem: {fileID: 19831730}
   RainExplosionParticleSystem: {fileID: 19824492}
   RainMistParticleSystem: {fileID: 19836512}
-  RainMistThreshold: 0.5
+  RainMistThreshold: 1
   WindSound: {fileID: 8300000, guid: f9826f595784348498b57bcf6b2c8b1f, type: 3}
   WindSoundVolumeModifier: 0.5
-  WindZone: {fileID: 18204160}
-  WindSpeedRange: {x: 50, y: 100, z: 500}
-  WindChangeInterval: {x: 5, y: 30}
+  WindZone: {fileID: 0}
+  WindSpeedRange: {x: 1, y: 1, z: 1}
+  WindChangeInterval: {x: 1, y: 1}
   EnableWind: 1
   RainHeight: 25
   RainForwardOffset: -7
-  RainMistHeight: 3
+  RainMistHeight: 1
 --- !u!114 &11482444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,9 +206,9 @@ WindZone:
   m_Mode: 0
   m_Radius: 50
   m_WindMain: 1
-  m_WindTurbulence: 50
-  m_WindPulseMagnitude: 3
-  m_WindPulseFrequency: 0.05
+  m_WindTurbulence: 0.2
+  m_WindPulseMagnitude: 0.2
+  m_WindPulseFrequency: 0.2
 --- !u!198 &19824492
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -4934,8 +4934,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 1, b: 1, a: 0.47058824}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.27450982}
+      minColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -13786,7 +13786,7 @@ ParticleSystemRenderer:
   m_MaxParticleSize: 100
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
-  m_LengthScale: 8
+  m_LengthScale: 91
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_RenderAlignment: 0
