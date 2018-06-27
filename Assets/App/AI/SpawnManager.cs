@@ -5,14 +5,38 @@ using UnityEngine;
 [System.Serializable]
 public class SpawnPoint
 {
-    public Transform self;
-    public AIWaypoint destination;
+    public Transform self; 
 }
+
+[System.Serializable]
+public class SpawnWave
+{
+    public List<SpawnPoint> SpawnPoints; // allows gameobjects instead of coords
+    public List<SpawnablePrefab> SpawnPrefabs;
+}
+
+[System.Serializable]
+public class SpawnablePrefab
+{
+
+    public GameObject Prefab;
+    public int Quantity;
+    public AIWaypoint destination;
+
+}
+
 
 public class SpawnManager : MonoSingleton<SpawnManager>
 {
-    public List<SpawnPoint> SpawnPoints = new List<SpawnPoint>();
-    public List<GameObject> SpawnPrefabs = new List<GameObject>();
+    public List<SpawnWave> Waves = new List<SpawnWave>();
+
+    private SpawnWave _currentWave;
+
+    private void Start()
+    {
+        _currentWave = Waves.Count > 0 ? Waves[0] : null;
+    }
+
 
     [SerializeField]
     private int currentSpanwPoint = 0;
