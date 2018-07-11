@@ -1055,13 +1055,14 @@ MonoBehaviour:
   crosshair: {fileID: 10914, guid: 0000000000000000f000000000000000, type: 0}
   smoothingTime: 10
   pivotOffset: {x: 0.2, y: 0.7, z: 0}
-  camOffset: {x: 0, y: 4.5, z: -6}
-  closeOffset: {x: 0.35, y: 1.7, z: 0}
+  camOffset: {x: 0, y: 4.5, z: -9}
+  closeOffset: {x: 0.55, y: 1.7, z: 0}
   horizontalAimingSpeed: 200
   verticalAimingSpeed: 200
   maxVerticalAngle: 20
   minVerticalAngle: -30
   mouseSensitivity: 0.1
+  lockCursor: 1
 --- !u!124 &124950642715155420
 Behaviour:
   m_ObjectHideFlags: 1
@@ -1159,7 +1160,7 @@ CharacterController:
   m_Height: 1.56
   m_Radius: 0.36
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.9
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.84, z: 0}

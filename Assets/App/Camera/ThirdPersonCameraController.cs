@@ -8,31 +8,37 @@ namespace Assets.App.Camera
 {
     public class ThirdPersonCameraController : MonoSingleton<ThirdPersonCameraController>
     {
+        [Header("Camera Configuration")]
         public Transform player;
-        public Texture crosshair; // crosshair - removed it for quick and easy setup. ben0bi
+        public Texture crosshair;
 
-        protected Transform aimTarget; // that was public and a gameobject had to be dragged on it. - ben0bi
+        protected Transform aimTarget;
 
-        public float smoothingTime = 10.0f; // it should follow it faster by jumping (y-axis) (previous: 0.1 or so) ben0bi
-        public Vector3 pivotOffset = new Vector3(0.2f, 0.7f, 0.0f); // offset of point from player transform (?) ben0bi
-        public Vector3 camOffset = new Vector3(0.0f, 0.7f, -3.4f); // offset of camera from pivotOffset (?) ben0bi
-        public Vector3 closeOffset = new Vector3(0.35f, 1.7f, 0.0f); // close offset of camera from pivotOffset (?) ben0bi
+        public float smoothingTime = 10.0f;
+        [Tooltip("offset of point from player transform")]
+        public Vector3 pivotOffset = new Vector3(0.2f, 0.7f, 0.0f);
+        [Tooltip("offset of camera from pivotOffset")]
+        public Vector3 camOffset = new Vector3(0.0f, 4.5f, -6f);
+        [Tooltip("close offset of camera from pivotOffset")]
+        public Vector3 closeOffset = new Vector3(0.35f, 1.7f, 0.0f);
 
-        public float horizontalAimingSpeed = 800f; // was way to lame for me (270) ben0bi
-        public float verticalAimingSpeed = 800f;   // --"-- (270) ben0bi
-        public float maxVerticalAngle = 80f;
-        public float minVerticalAngle = -80f;
+        public float horizontalAimingSpeed = 200f;
+        public float verticalAimingSpeed = 200f;
+        public float maxVerticalAngle = 20f;
+        public float minVerticalAngle = -30f;
 
-        public float mouseSensitivity = 0.3f;
+        [Header("Mouse Options")]
+        public float mouseSensitivity = 0.1f;
+        [Tooltip("Press Escape to toggle in game")]
+        public bool lockCursor = true;
 
         private float angleH = 0;
         private float angleV = 0;
         private Transform cam;
-        private float maxCamDist = 1;
+        private float maxCamDist = 3;
         private LayerMask mask;
         private Vector3 smoothPlayerPos;
 
-        // Use this for initialization
         void Start()
         {
             // [edit] no aimtarget gameobject needs to be placed anymore - ben0bi
@@ -44,30 +50,50 @@ namespace Assets.App.Camera
             mask |= 1 << LayerMask.NameToLayer("Ignore Raycast");
             // Invert mask
             mask = ~mask;
-            
+
             cam = transform;
             smoothPlayerPos = player.position;
 
-            maxCamDist = 3;
+            if (lockCursor)
+            {
+                LockCursor();
+            }
         }
 
-        // Update is called once per frame
         void LateUpdate()
         {
             if (Time.deltaTime == 0 || Time.timeScale == 0 || player == null)
                 return;
             // if you want to set up an xbox controller or something, you need to uncomment the 
-            // commented axes below in the source. 
-            // (unity->edit->Project Settings->input, check the parameters behind the @ below.)
-            // you can set up a new axis in the inspector by typing in a bigger number in the size property at the top.
-            // I removed this, so you can quick and easy add this script to your game. - ben0bi
-            // @joystick 3rd axis
+            // Horizontal2 and Vertical2 Axes as well as configure them in Unity Input Manager
+            // (unity->edit->Project Settings->input)
+            // you can set up a new axis in the inspector by adding 2 to the number in the size property at the top.
+            // this will add two new fields to the list of inputs both with the same name which you will want to rename to Horizontal2 and Vertical2
+            // Configure Horizontal2 and set it up to use joystick 3rd axis
             angleH += Mathf.Clamp(Input.GetAxis("Mouse X") /* + Input.GetAxis("Horizontal2") */ , -1, 1) * horizontalAimingSpeed * Time.deltaTime;
-            // @joystick 4th axis
+            // Configure Vertical2 and set it up to use joystick 4th axis
             angleV += Mathf.Clamp(Input.GetAxis("Mouse Y") /* + Input.GetAxis("Vertical2") */ , -1, 1) * verticalAimingSpeed * Time.deltaTime;
             // limit vertical angle
             angleV = Mathf.Clamp(angleV, minVerticalAngle, maxVerticalAngle);
 
+            AdjustCameraSmooth();
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                lockCursor = !lockCursor;
+                if (lockCursor)
+                {
+                    LockCursor();
+                }
+                else
+                {
+                    UnlockCursor();
+                }
+            }
+        }
+
+        private void AdjustCameraSmooth()
+        {
             // Before changing camera, store the prev aiming distance.
             // If we're aiming at nothing (the sky), we'll keep this distance.
             float prevDist = (aimTarget.position - cam.position).magnitude;
@@ -124,11 +150,20 @@ namespace Assets.App.Camera
         }
 
         // uncomment this if you want to have a crosshair - ben0bi
-        
-        void OnGUI () 
+
+        void OnGUI()
         {
             if (Time.time != 0 && Time.timeScale != 0)
-                GUI.DrawTexture(new Rect(Screen.width/2-(crosshair.width*0.5f), Screen.height/2-(crosshair.height*0.5f), crosshair.width, crosshair.height), crosshair);
+                GUI.DrawTexture(new Rect(Screen.width / 2 - (crosshair.width * 0.5f), Screen.height / 2 - (crosshair.height * 0.5f), crosshair.width, crosshair.height), crosshair);
+        }
+
+        void LockCursor()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        void UnlockCursor()
+        {
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
