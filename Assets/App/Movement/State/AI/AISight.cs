@@ -61,7 +61,6 @@ public class AISight : MonoBehaviour
         if (other.GetComponent<PlayerMotor>())
         {
             PlayerInSight = false;
-            motor.MoveToWaypoint();
         }
     }
 

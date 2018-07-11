@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class SpawnPoint // allows us to use gameobjects instead of coords
-{
-    public Transform SpawnLocation;
-    public bool Destroyable; // Stretch Goal Feature
-}
-
-[System.Serializable]
 public class SpawnWave
 {
     [Header("Wave Details")]
@@ -17,7 +10,7 @@ public class SpawnWave
     [Header("Require all prefabs to be cleared before progressing waves.")]
     public bool ClearBeforeAdvancing = true;
     [Tooltip("Delays the start of the wave in seconds")]
-    [Range(8f, 90f)]
+    [Range(0f, 180f)]
     public float WaveDelay = 8f;
     public bool WaveCleared { get; private set; }
 
@@ -61,13 +54,13 @@ public class SpawnWave
         {
             if (spawnable.SpawnPoint == null)
             {
-                spawnable.SpawnPoint = SetSpawnPoint();
+                spawnable.SpawnPoint = GetSpawnPoint();
             }
         }
         return true;
     }
 
-    private SpawnPoint SetSpawnPoint()
+    public SpawnPoint GetSpawnPoint()
     {
         if (RandomizeSpawnPoints)
         {
@@ -80,7 +73,6 @@ public class SpawnWave
             _spawnIndex = 0;
         }
         return SpawnPoints[_spawnIndex];
-
     }
 
     public void ClearWave()
@@ -109,7 +101,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 {
     public List<SpawnWave> Waves = new List<SpawnWave>();
 
-    private List<GameObject> _activeGameObjects = new List<GameObject>();
+    public List<GameObject> _activeGameObjects = new List<GameObject>();
     private SpawnWave _currentWave;
 
     private int waveIndex = -1;
@@ -121,8 +113,10 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         if (_currentWave == null)
         {
             Debug.LogWarning("[INVALID SPAWN MANAGER] Add Waves to use SpawnManager");
+            return;
         }
         waveIndex = 0;
+        StartWave();
     }
 
     public IEnumerator StartSpawn()
@@ -141,13 +135,18 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     public IEnumerator BeginWave()
     {
+        Debug.Log("Wave Starting");
         yield return new WaitForSeconds(_currentWave.WaveDelay);
         StartCoroutine(StartSpawn());
     }
 
     private void SpawnPrefab(SpawnablePrefab spawnable)
     {
-        var go = Instantiate(spawnable.Prefab, spawnable.SpawnPoint.SpawnLocation.position, spawnable.SpawnPoint.SpawnLocation.rotation);
+        if(spawnable.SpawnPoint == null)
+        {
+            spawnable.SpawnPoint = _currentWave.GetSpawnPoint();
+        }
+        var go = Instantiate(spawnable.Prefab, spawnable.SpawnPoint.transform.position, spawnable.SpawnPoint.transform.rotation);
         spawnable.OnSpawn(go);
         _activeGameObjects.Add(go);
     }
@@ -180,20 +179,25 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         {
             waveIndex += 1;
             _currentWave = Waves[waveIndex];
-            if (_currentWave.PrepareWave())
-            {
-                StartCoroutine(BeginWave());
-            }
-            else
-            {
-                Debug.LogWarning("[WAVE WARNING] Skipped Wave " + waveIndex + " bad configuration");
-                AdvanceWave();
-            }
+            StartWave();
         }
         else
         {
             // All Waves Cleared
             Debug.Log("All Waves Cleared");
+        }
+    }
+
+    private void StartWave()
+    {
+        if (_currentWave.PrepareWave())
+        {
+            StartCoroutine(BeginWave());
+        }
+        else
+        {
+            Debug.LogWarning("[WAVE WARNING] Skipped Wave " + waveIndex + " bad configuration");
+            AdvanceWave();
         }
     }
 
