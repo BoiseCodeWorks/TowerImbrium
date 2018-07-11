@@ -9,8 +9,7 @@ using UnityEngine.AI;
 public class AIMotor : MonoBehaviour
 {
     public float TargetDistance = .3f;
-    public float AttackCooldown = 1.5f;
-    public AIWaypoint TargetDestination;
+    public float AttackCooldown = .5f;
     public float distanceToTarget;
 
     private Animator anim;
@@ -30,12 +29,15 @@ public class AIMotor : MonoBehaviour
 
     private void Update()
     {
-        MoveToTarget();
+        Attack();
     }
 
-    private void MoveToTarget()
+    private void Attack()
     {
-        SetDestination(_manager.GetCurrentGoal());
+        if (Attacking)
+        {
+            return;
+        }
         distanceToTarget = Vector3.Distance(transform.position, agent.destination);
         Attacking = false;
         if (distanceToTarget <= TargetDistance && AttackTarget != null)
@@ -45,14 +47,12 @@ public class AIMotor : MonoBehaviour
             StartCoroutine("StartAttack");
             return;
         }
-        if (Attacking) {
-            return;
-        }
-        
-        if (agent.hasPath)
-        {
-            anim.SetFloat("Speed", 1);
-        }
+        MoveToTarget();
+    }
+
+    private void MoveToTarget()
+    {
+        SetDestination(_manager.GetCurrentGoal());
     }
 
     IEnumerator StartAttack()
@@ -66,6 +66,7 @@ public class AIMotor : MonoBehaviour
     public void SetDestination(Vector3 position)
     {
         agent.SetDestination(position);
+        anim.SetFloat("Speed", 1);
     }
 
     internal void SetAttackTarget(Destroyable destroyable)

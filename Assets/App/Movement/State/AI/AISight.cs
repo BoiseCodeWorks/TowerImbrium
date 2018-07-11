@@ -27,6 +27,7 @@ public class AISight : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.tag == gameObject.tag) { return; }
         if (other.GetComponent<PlayerMotor>())
         {
             Player = other.gameObject;

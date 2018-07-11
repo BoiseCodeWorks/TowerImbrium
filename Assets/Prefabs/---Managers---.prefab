@@ -69,7 +69,7 @@ MonoBehaviour:
     - {fileID: 0}
     Spawnables:
     - Prefab: {fileID: 1844704834048846, guid: 7111835d120aaec45af40ce6e1d053bb, type: 2}
-      Quantity: 30
+      Quantity: 3
       SpawnPoint: {fileID: 0}
     RandomizeSpawnPoints: 0
     SpawnRateInterval: 0.5
