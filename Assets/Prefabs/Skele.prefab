@@ -633,7 +633,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844704834048846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 498.84232, y: 37.787453, z: 444.72256}
+  m_LocalPosition: {x: 496.62103, y: 37.798897, z: 451.6989}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4108694333509332}
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetDistance: 8
-  AttackCooldown: 0.75
+  AttackCooldown: 1.25
   distanceToTarget: 0
 --- !u!114 &114181802485377290
 MonoBehaviour:
@@ -1086,11 +1086,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
+  AttackPushForce: 15
   Triggers:
   - {fileID: 114181802485377290}
   - {fileID: 114666971428824500}
   - {fileID: 114590928652935290}
   - {fileID: 114185564637508406}
+  Sounds: []
 --- !u!114 &114566766222029472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1104,8 +1106,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   DefenseModifier: 1
-  DeathAnimationDuration: 1.75
+  DeathAnimationDuration: 0.75
   PlayAnimationOnDestroy: 0
+  KnockbackEnabled: 1
+  DamageSounds: []
+  DeathSounds: []
 --- !u!114 &114590928652935290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5852,7 +5857,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f2067e13ea697f64c9826d1f23e6174b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

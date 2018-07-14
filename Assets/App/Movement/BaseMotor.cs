@@ -48,6 +48,10 @@ public abstract class BaseMotor : MonoBehaviour
     {
         characterTransform.rotation = RotationQuaternion;
     }
+    protected virtual void Rotate(float y)
+    {
+        characterTransform.rotation = new Quaternion(RotationQuaternion.x, y, RotationQuaternion.z, RotationQuaternion.w);
+    }
 
     protected virtual void Move()
     {

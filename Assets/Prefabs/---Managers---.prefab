@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4137731169532710}
   - component: {fileID: 114465514940880096}
   - component: {fileID: 114550588157328044}
+  - component: {fileID: 114263921277124652}
+  - component: {fileID: 114619237415830992}
   m_Layer: 0
   m_Name: '---Managers---'
   m_TagString: Untagged
@@ -41,6 +43,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114263921277124652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152594662158394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dadf870d32f768a4087792e7266aa74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioManager: {fileID: 0}
+  UIManager: {fileID: 0}
+  SpawnManager: {fileID: 0}
+  EnemyManager: {fileID: 0}
+  PlayerManager: {fileID: 0}
+  StartMusic: {fileID: 8300000, guid: af7399e53b70e2941a27572305a42f02, type: 3}
 --- !u!114 &114465514940880096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,3 +107,16 @@ MonoBehaviour:
   EnemyGoals:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &114619237415830992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152594662158394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863b08b8e2d35c940b418591446c64aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventText: {fileID: 0}
+  Healthbar: {fileID: 0}

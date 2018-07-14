@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ public class Destroyable : MonoBehaviour
     public float DeathAnimationDuration = 1.75f;
     public bool PlayAnimationOnDestroy = false;
     public bool Destroyed { get { return Health <= 0; } }
+    public bool KnockbackEnabled = true;
+    public List<AudioClip> DamageSounds;
+    public List<AudioClip> DeathSounds;
 
     private Animator anim;
     private ParticleSystem ps;
@@ -24,9 +28,14 @@ public class Destroyable : MonoBehaviour
     public virtual void ApplyDamage(float damage)
     {
         Health -= damage * DefenseModifier;
-        if(Destroyed)
+        if (Destroyed)
         {
-            OnDestroy();
+            RunDestroy();
+            return;
+        }
+        if (DamageSounds != null)
+        {
+            AudioManager.instance.RandomizeSfx(DamageSounds);
         }
     }
 
@@ -35,10 +44,14 @@ public class Destroyable : MonoBehaviour
         DefenseModifier += n;
     }
 
-    public virtual void OnDestroy()
+    public void RunDestroy()
     {
         anim.SetTrigger("Destroyed");
         ps.Play();
+        if (DamageSounds != null)
+        {
+            AudioManager.instance.RandomizeSfx(DeathSounds);
+        }
         Destroy(gameObject, DeathAnimationDuration);
     }
 }

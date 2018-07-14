@@ -135,8 +135,9 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     public IEnumerator BeginWave()
     {
-        Debug.Log("Wave Starting");
+        UIManager.instance.SetEventText("INCOMING....");
         yield return new WaitForSeconds(_currentWave.WaveDelay);
+        UIManager.instance.SetEventText("Wave " + CurrentWaveNumber);
         StartCoroutine(StartSpawn());
     }
 
@@ -156,7 +157,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         //Check to see if the current wave can be skipped
         if (_currentWave.ClearBeforeAdvancing && !_currentWave.WaveCleared)
         {
-            Debug.Log("Unable to advance, wave still in progress");
+            UIManager.instance.SetEventText("Unable to advance, wave still in progress");
             return;
         }
 
@@ -184,7 +185,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         else
         {
             // All Waves Cleared
-            Debug.Log("All Waves Cleared");
+            UIManager.instance.SetEventText("All Waves Cleared");
         }
     }
 
